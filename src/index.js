@@ -2,8 +2,12 @@ const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
+app.use(bodyParser.json());
+app.use(authRoutes);
 
 const mongoUri = `mongodb+srv://kiribaty:${process.env.MONGOPASSWORD}@cluster0.eoapt.mongodb.net/Cluster0?retryWrites=true&w=majority`;
 mongoose.connect(mongoUri, {
