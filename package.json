@@ -4,6 +4,7 @@
   "description": "Express server with MongoDB connection used as the backend for the Track App",
   "main": "index.js",
   "scripts": {
+    "start":"node src/index.js",
     "dev": "nodemon src/index.js"
   },
   "repository": {
