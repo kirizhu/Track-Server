@@ -1,15 +1,18 @@
 require('./models/User');
+require('./models/Track');
 const express = require('express');
-const dotenv = require('dotenv');
-dotenv.config();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
+const trackRoutes = require('./routes/trackRoutes');
 const requireAuth = require('./middlewares/requireAuth');
 
+dotenv.config();
 const app = express();
 app.use(bodyParser.json());
 app.use(authRoutes);
+app.use(trackRoutes);
 
 const mongoUri = `mongodb+srv://kiribaty:${process.env.MONGO_PASSWORD}@cluster0.eoapt.mongodb.net/Cluster0?retryWrites=true&w=majority`;
 mongoose.connect(mongoUri, {
