@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+//hashes and salts our password before we save a new user
 userSchema.pre('save', function (next) {
   const user = this;
   if (!user.isModified('password')) {
@@ -30,7 +31,7 @@ userSchema.pre('save', function (next) {
     });
   });
 });
-
+//Method attached to every user that gets created that is going to automatically compare provided and stored password
 userSchema.methods.comparePassword = function (cadidatePassword) {
   const user = this;
   return new Promise((resolve, reject) => {
