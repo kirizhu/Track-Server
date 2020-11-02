@@ -10,7 +10,11 @@ router.use(requireAuth);
 
 router.get('/tracks', async (req, res) => {
   const tracks = await Track.find({ userId: req.user._id });
+  res.send(tracks);
+});
 
+router.delete('/tracks', async (req, res) => {
+  const tracks = await Track.findByIdAndDelete({ _id: req.body._id });
   res.send(tracks);
 });
 
