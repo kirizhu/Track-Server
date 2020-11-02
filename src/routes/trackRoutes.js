@@ -14,8 +14,8 @@ router.get('/tracks', async (req, res) => {
 });
 
 router.delete('/tracks', async (req, res) => {
-  const tracks = await Track.findByIdAndDelete({ _id: req.body._id });
-  res.send(tracks);
+  await Track.findByIdAndDelete({ _id: req.body._id });
+  res.send();
 });
 
 router.post('/tracks', async (req, res) => {
